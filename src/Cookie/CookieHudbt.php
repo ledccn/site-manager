@@ -8,8 +8,6 @@ use Iyuu\SiteManager\Frameworks\NexusPhp\HasCookie;
 use Iyuu\SiteManager\Library\Selector;
 use Iyuu\SiteManager\Spider\Pagination;
 use Iyuu\SiteManager\Spider\SpiderTorrents;
-use Iyuu\SiteManager\Utils;
-use support\Log;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**

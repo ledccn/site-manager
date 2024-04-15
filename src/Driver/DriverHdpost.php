@@ -3,11 +3,11 @@
 namespace Iyuu\SiteManager\Driver;
 
 use DOMDocument;
+use Iyuu\SiteManager\BaseDriver;
 use Iyuu\SiteManager\Contracts\Processor;
 use Iyuu\SiteManager\Contracts\ProcessorXml;
 use Iyuu\SiteManager\Exception\EmptyListException;
 use Iyuu\SiteManager\Frameworks\Unit3D\HasRss;
-use Iyuu\SiteManager\BaseDriver;
 use Iyuu\SiteManager\Spider\RouteEnum;
 use Iyuu\SiteManager\Spider\SpiderTorrents;
 use RuntimeException;

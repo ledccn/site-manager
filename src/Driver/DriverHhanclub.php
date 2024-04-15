@@ -2,10 +2,10 @@
 
 namespace Iyuu\SiteManager\Driver;
 
+use Iyuu\SiteManager\BaseDriver;
 use Iyuu\SiteManager\Contracts\Processor;
 use Iyuu\SiteManager\Contracts\ProcessorXml;
 use Iyuu\SiteManager\Frameworks\NexusPhp\HasRss;
-use Iyuu\SiteManager\BaseDriver;
 
 /**
  * hhanclub

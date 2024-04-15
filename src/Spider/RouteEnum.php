@@ -45,6 +45,19 @@ enum RouteEnum: string
      * 种子RSS页面【Uint3D架构】普斯特
      */
     case N9 = 'rss/33.{rsskey}';
+    /**
+     * 种子RSS页面【朱雀】
+     */
+    case N10 = 'api/torrent/rss/{rss_key}/{torrent_key}';
+    /**
+     * 种子列表页【朱雀】
+     * @deprecated
+     */
+    case N11 = 'api/torrent/list?page={page}&size=20';
+    /**
+     * 种子列表页【朱雀】
+     */
+    case N12 = 'api/torrent/advancedSearch?page={page}&size=20';
 
     /**
      * 检查枚举名字

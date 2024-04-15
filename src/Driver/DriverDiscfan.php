@@ -2,8 +2,8 @@
 
 namespace Iyuu\SiteManager\Driver;
 
-use Iyuu\SiteManager\Contracts\Processor;
 use Iyuu\SiteManager\BaseDriver;
+use Iyuu\SiteManager\Contracts\Processor;
 
 /**
  * discfan

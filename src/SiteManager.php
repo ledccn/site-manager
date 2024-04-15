@@ -104,6 +104,15 @@ class SiteManager extends Manager implements DownloaderInterface
     }
 
     /**
+     * 清理所有驱动实例
+     * @return void
+     */
+    public function clearDriver(): void
+    {
+        $this->drivers = [];
+    }
+
+    /**
      * 站点名称转换为类名
      * @param string $site
      * @return string

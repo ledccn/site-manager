@@ -30,12 +30,6 @@ abstract class BaseDriver implements DownloaderInterface, DownloaderLinkInterfac
     protected readonly Config $config;
 
     /**
-     * 缓存对象实例：凭cookie解析HTML列表页
-     * @var array<string, BaseCookie>
-     */
-    private array $baseCookies = [];
-
-    /**
      * @param array $config 当前站点配置
      */
     final public function __construct(array $config)
@@ -61,10 +55,7 @@ abstract class BaseDriver implements DownloaderInterface, DownloaderLinkInterfac
         $site = $this->config->site;
         $class = BaseCookie::siteToClass($site);
         if (is_subclass_of($class, BaseCookie::class)) {
-            if (!isset($this->baseCookies[$site])) {
-                $this->baseCookies[$site] = new $class($this);
-            }
-            return $this->baseCookies[$site];
+            return new $class($this);
         }
 
         throw new InvalidArgumentException("Cookie Processor [$site] not supported.");

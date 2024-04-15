@@ -21,6 +21,7 @@ trait HasRequestHtml
         $config = $this->getConfig();
         $config->setCurlOptions($curl);
         $curl->setCookies($config->get('cookie', $config->get('cookies', '')));
+        $this->beforeRequestHtml($curl);
         $curl->get($url);
         if (!$curl->isSuccess()) {
             $errmsg = $curl->error_message ?? '网络不通或cookies过期';
@@ -32,5 +33,14 @@ trait HasRequestHtml
             throw new RuntimeException('下载HTML失败：curl_exec返回错误');
         }
         return $html;
+    }
+
+    /**
+     * 请求html页面前回调
+     * @param Curl $curl
+     * @return void
+     */
+    protected function beforeRequestHtml(Curl $curl): void
+    {
     }
 }

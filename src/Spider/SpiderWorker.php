@@ -83,7 +83,7 @@ class SpiderWorker
             // 停止主进程
             $this->stopMasterProcess(static::$worker);
         } else {
-            echo '==================退出当前子进程，WorkerId:' . $worker->id . PHP_EOL;
+            echo '==================退出当前子进程，WorkerId:' . $worker->id . PHP_EOL . PHP_EOL;
             self::stopAll();
         }
     }

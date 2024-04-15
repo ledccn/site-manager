@@ -36,9 +36,41 @@ class Config implements ArrayAccess
      */
     const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36';
 
+    /**
+     * 子类初始化
+     * @return void
+     */
     protected function initialize(): void
     {
         $this->verifyCookie();
+    }
+
+    /**
+     * 获取用户配置值(options字段内的值)
+     * - 支持点 . 分隔符
+     * @param string|null $key
+     * @param mixed|null $default
+     * @return mixed
+     */
+    public function getOptions(?string $key = null, mixed $default = null): mixed
+    {
+        if (null === $key) {
+            return $this->get('options', $default);
+        }
+        return $this->get('options.' . $key, $default);
+    }
+
+    /**
+     * 获取限速规则
+     * @return array|null
+     */
+    public function getLimit(): ?array
+    {
+        if ($limit = $this->getOptions('limit')) {
+            return $limit;
+        }
+
+        return null;
     }
 
     /**
@@ -73,7 +105,7 @@ class Config implements ArrayAccess
     }
 
     /**
-     * 解析生成请求uri
+     * 解析生成下载种子的uri
      * - 包括path和queryString部分
      * @return string
      */

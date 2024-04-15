@@ -2,10 +2,6 @@
 - 当然我们还可以使用CSS选择器 ( [CSS选择器教程](http://www.w3school.com.cn/cssref/css_selectors.asp) )
 - 很多情况下都会用到正则表达式 ( [正则表达式教程](https://www.w3cschool.cn/regexp/) )
 
-
-
-
-
 # selector类
 
 `selector`是页面元素选择器类，下面介绍此类可以调用的方法
@@ -71,10 +67,6 @@ $data = selector::remove($html, "//span[contains(@class,'tt')]");
 print_r($data);
 ```
 
-
-
-
-
 # 爬虫进阶开发——xpath选择器常见用法
 
 俗话说，工欲上其事，必先利其器，学好xpath选择器，能极高的提升在爬虫的数据提取环节中的提取速度，下面我们来认识认识xpath。
@@ -85,14 +77,14 @@ XPath 使用路径表达式在 XML 文档中选取节点。节点是通过沿着
 
 **下面列出了最有用的路径表达式**
 
-| 表达式   | 描述                                                       |
-| :------- | :--------------------------------------------------------- |
-| nodename | 选取此节点的所有子节点。                                   |
-| /        | 从根节点选取。                                             |
+| 表达式      | 描述                            |
+|:---------|:------------------------------|
+| nodename | 选取此节点的所有子节点。                  |
+| /        | 从根节点选取。                       |
 | //       | 从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。 |
-| .        | 选取当前节点。                                             |
-| ..       | 选取当前节点的父节点。                                     |
-| @        | 选取属性。                                                 |
+| .        | 选取当前节点。                       |
+| ..       | 选取当前节点的父节点。                   |
+| @        | 选取属性。                         |
 
 **实例**
 
@@ -152,10 +144,14 @@ $data = selector::select($html, "//td@data-value");
 
 1.contains ()： //div[contains(@id, 'in')] ,表示选择id中包含有’in’的div节点
 
-2.text()：由于一个节点的文本值不属于属性，比如`<a class=”baidu“ href=”http://www.baidu.com“>baidu</a>`,所以，用text()函数来匹配节点：//a[text()='baidu']
+2.text()：由于一个节点的文本值不属于属性，比如`<a class=”baidu“ href=”http://www.baidu.com“>baidu</a>`,所以，用text()
+函数来匹配节点：//a[text()='baidu']
 
 3.last()：//div[contains(@id, 'in')][las()]，表示选择id中包含有'in'的div节点的最后一个节点
 
 4.starts-with()： //div[starts-with(@id, 'in')] ，表示选择以’in’开头的id属性的div节点
 
-5.not()函数，表示否定，//input[@name=‘identity’ and not(contains(@class,‘a’))] ，表示匹配出name为identity并且class的值中不包含a的input节点。 not()函数通常与返回值为true or false的函数组合起来用，比如contains(),starts-with()等，但有一种特别情况请注意一下：我们要匹配出input节点含有id属性的，写法如下：//input[@id]，如果我们要匹配出input节点不含用id属性的，则为：//input[not(@id)]
+5.not()函数，表示否定，//input[@name=‘identity’ and not(contains(@class,‘a’))] ，表示匹配出name为identity并且class的值中不包含a的input节点。
+not()函数通常与返回值为true or false的函数组合起来用，比如contains(),starts-with()
+等，但有一种特别情况请注意一下：我们要匹配出input节点含有id属性的，写法如下：//input[@id]
+，如果我们要匹配出input节点不含用id属性的，则为：//input[not(@id)]

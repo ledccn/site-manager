@@ -23,7 +23,7 @@ trait Pagination
         file_put_contents($file, $next_page);
 
         $worker_id = SpiderWorker::getParams()->canValidAction() ? SpiderWorker::getWorker()->id : 0;
-        echo SpiderWorker::getParams()->site . ' ｜ Worker进程ID：' . $worker_id . ' ｜ 当前页码：' . $current_page . ' ｜ 下一页：' . $next_page . PHP_EOL;
+        echo SpiderWorker::getParams()->site . ' ｜ Worker进程ID：' . $worker_id . ' ｜ 当前页码：' . $current_page . ' ｜ 下一页：' . $next_page . PHP_EOL . PHP_EOL;
 
         return $current_page;
     }

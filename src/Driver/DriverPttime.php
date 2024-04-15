@@ -2,10 +2,10 @@
 
 namespace Iyuu\SiteManager\Driver;
 
+use Iyuu\SiteManager\BaseDriver;
 use Iyuu\SiteManager\Contracts\Processor;
 use Iyuu\SiteManager\Contracts\ProcessorXml;
 use Iyuu\SiteManager\Frameworks\NexusPhp\HasRss;
-use Iyuu\SiteManager\BaseDriver;
 
 /**
  * pttime
@@ -13,6 +13,7 @@ use Iyuu\SiteManager\BaseDriver;
 class DriverPttime extends BaseDriver implements Processor, ProcessorXml
 {
     use HasRss;
+
     /**
      * 站点名称
      */

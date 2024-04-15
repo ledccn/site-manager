@@ -2,12 +2,16 @@
 
 namespace Iyuu\SiteManager\Command;
 
+use Iyuu\SiteManager\Config;
+use Iyuu\SiteManager\Contracts\ConfigInterface;
 use Iyuu\SiteManager\SiteManager;
+use Ledc\Container\App;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Throwable;
 
 /**
  * 生成爬虫脚本
@@ -54,10 +58,17 @@ class MakeSpiderShell extends Command
     protected function createShell(string $type): void
     {
         $rows = SiteManager::supportList(true);
+        /** @var ConfigInterface $config */
+        $config = App::getInstance()->get(ConfigInterface::class);
         $cookies_list = [];
         $rss_list = [];
         foreach ($rows as $site => $row) {
-            $hasProcessor = $row[1];
+            try {
+                $siteConfig = new Config($config->get($site));
+            } catch (Throwable $throwable) {
+                continue;
+            }
+            $hasProcessor = $row[1] && $siteConfig->cookie;
             $hasProcessorXml = $row[2];
             if ($hasProcessor) {
                 $cookies_list[] = "\$PHP_BINARY webman spider $site";

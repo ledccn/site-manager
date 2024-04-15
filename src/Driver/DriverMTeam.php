@@ -27,6 +27,16 @@ class DriverMTeam extends BaseDriver implements ProcessorXml
     public const SITE_NAME = 'm-team';
 
     /**
+     * 设置Curl的存取令牌
+     * @param Curl $curl
+     * @return Curl
+     */
+    public function setCurlXApiKey(Curl $curl): Curl
+    {
+        return $curl->setHeader('x-api-key', $this->getConfig()->getOptions('x_api_key'));
+    }
+
+    /**
      * 获取默认的RSS路由规则
      * @return string
      */
@@ -61,7 +71,7 @@ class DriverMTeam extends BaseDriver implements ProcessorXml
 
             $curl = new Curl();
             $this->getConfig()->setCurlOptions($curl);
-            $curl->setCookies($this->getConfig()->get('cookie'));
+            $this->setCurlXApiKey($curl);
             $curl->upload($domain . '/' . $uri, ['id' => $torrent->torrent_id]);
             if ($curl->isSuccess()) {
                 $result = json_decode($curl->response);
@@ -73,7 +83,7 @@ class DriverMTeam extends BaseDriver implements ProcessorXml
                 }
 
                 if (!empty($result->message)) {
-                    throw new InvalidArgumentException(__METHOD__ . ' | ' . $result->message);
+                    throw new InvalidArgumentException('获取mteam种子链接时失败：' . $result->message);
                 }
             }
             $this->throwException($curl);

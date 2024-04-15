@@ -72,9 +72,6 @@ class CookieHaidan extends BaseCookie
                         $arr['type'] = 1;
                     }
 
-                    if ($this->isDebugCurrent()) {
-                        var_dump_exit($arr);
-                    }
                     $items[] = $arr;
                 }
             }

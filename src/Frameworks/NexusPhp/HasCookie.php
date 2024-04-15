@@ -77,7 +77,7 @@ trait HasCookie
                     $arr['download'] = $host . $url;
                     // 文件名
                     $arr['filename'] = $arr['id'] . '.torrent';
-                    
+
                     if ($arr['h1'] && $arr['h1'] === $arr['title']) {
                         $arr['title'] = '';
                     }
