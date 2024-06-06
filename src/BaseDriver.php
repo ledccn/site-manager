@@ -27,7 +27,7 @@ abstract class BaseDriver implements DownloaderInterface, DownloaderLinkInterfac
      * 当前站点配置
      * @var Config
      */
-    protected readonly Config $config;
+    private readonly Config $config;
 
     /**
      * @param array $config 当前站点配置
@@ -52,7 +52,7 @@ abstract class BaseDriver implements DownloaderInterface, DownloaderLinkInterfac
      */
     final public function makeBaseCookie(): BaseCookie
     {
-        $site = $this->config->site;
+        $site = $this->getConfig()->site;
         $class = BaseCookie::siteToClass($site);
         if (is_subclass_of($class, BaseCookie::class)) {
             return new $class($this);
@@ -190,7 +190,7 @@ abstract class BaseDriver implements DownloaderInterface, DownloaderLinkInterfac
      */
     protected function beforeDownload(Curl $curl): void
     {
-        $this->config->setCurlOptions($curl);
+        $this->getConfig()->setCurlOptions($curl);
     }
 
     /**
@@ -229,7 +229,7 @@ abstract class BaseDriver implements DownloaderInterface, DownloaderLinkInterfac
      */
     public function throwException(Curl $curl): void
     {
-        $errmsg = $curl->error_message ?: 'error_message为空';
+        $errmsg = $curl->error_message ?: 'error_message为空:' . json_encode([$curl->http_status_code, $curl->response_headers, $curl->response], JSON_UNESCAPED_UNICODE);
         if (302 === $curl->http_status_code) {
             if ($this->getConfig()->isCookieRequired()) {
                 $errmsg .= ' Cookie过期';

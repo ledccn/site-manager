@@ -6,19 +6,19 @@ use Iyuu\SiteManager\BaseDriver;
 use Iyuu\SiteManager\Contracts\Processor;
 use Iyuu\SiteManager\Contracts\ProcessorXml;
 use Iyuu\SiteManager\Contracts\Torrent;
-use Iyuu\SiteManager\Frameworks\Unit3D\HasRss;
+use Iyuu\SiteManager\Frameworks\NexusPhp\HasRss;
 
 /**
- * monikadesign
+ * dicmusic
  */
-class DriverMonikadesign extends BaseDriver implements Processor, ProcessorXml
+class DriverDicmusic extends BaseDriver implements Processor, ProcessorXml
 {
     use HasRss;
 
     /**
      * 站点名称
      */
-    public const string SITE_NAME = 'monikadesign';
+    public const string SITE_NAME = 'dicmusic';
 
     /**
      * 解析生成替换规则
@@ -30,7 +30,8 @@ class DriverMonikadesign extends BaseDriver implements Processor, ProcessorXml
         return [
             '{}' => $torrent->torrent_id,
             '{id}' => $torrent->torrent_id,
-            '{rsskey}' => $this->getConfig()->get('options.rsskey', '')
+            '{authkey}' => $this->getConfig()->getOptions('authkey'),
+            '{torrent_pass}' => $this->getConfig()->getOptions('torrent_pass'),
         ];
     }
 }

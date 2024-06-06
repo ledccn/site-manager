@@ -7,15 +7,24 @@ use Iyuu\SiteManager\Frameworks\NexusPhp\HasCookie;
 use Iyuu\SiteManager\Spider\Pagination;
 
 /**
- * joyhd
+ * ecustpt
  * - 凭cookie解析HTML列表页
  */
-class CookieJoyhd extends BaseCookie
+class CookieEcustpt extends BaseCookie
 {
     use HasCookie, Pagination;
 
     /**
      * 站点名称
      */
-    public const string SITE_NAME = 'joyhd';
+    public const string SITE_NAME = 'ecustpt';
+
+    /**
+     * 是否调试当前站点
+     * @return bool
+     */
+    protected function isDebugCurrent(): bool
+    {
+        return false;
+    }
 }

@@ -7,15 +7,15 @@ use Iyuu\SiteManager\Frameworks\NexusPhp\HasCookie;
 use Iyuu\SiteManager\Spider\Pagination;
 
 /**
- * joyhd
+ * icc2022
  * - 凭cookie解析HTML列表页
  */
-class CookieJoyhd extends BaseCookie
+class CookieIcc2022 extends BaseCookie
 {
     use HasCookie, Pagination;
 
     /**
      * 站点名称
      */
-    public const string SITE_NAME = 'joyhd';
+    public const string SITE_NAME = 'icc2022';
 }

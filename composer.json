@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "Webman plugin iyuu/site-manager，站点管理基础库",
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.3",
     "workerman/webman-framework": "^1.5.0",
     "monolog/monolog": "^2.9",
     "vlucas/phpdotenv": "^5.6",
